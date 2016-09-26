@@ -1,2 +1,2 @@
 # alorithms
-some solutions for Leetcode
+some solutions for Leetcode questions
