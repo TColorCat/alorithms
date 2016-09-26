@@ -17,3 +17,25 @@ public:
     
     
 };
+//a traditional way
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int bias=1;
+        for(int i=0;i<(nums.size()-bias);i++)
+        {
+            if(nums[i]==0)
+            {
+                while((nums[i+bias]==0)&&((i+bias)<=nums.size))
+                    bias=bias+1;
+               int temp=0;
+        temp=nums[i];
+        nums[i]=nums[i+bias];
+        nums[i+bias]=temp;
+            }
+        }
+    }
+    
+    
+    
+};
