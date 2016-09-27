@@ -12,6 +12,15 @@ public:
             r ^= nums[i];
         
         last = r & (~(r - 1));
+        /*
+				There is a little trick here to get the last bit equal 1 from the result XOR.
+see if we get XOR = aaaa1000(a = 1 or 0)
+we could get the first(from low to high) bit equals 1 as follow:
+first:~XOR = bbbb0111 (b = ~a)
+then add 1, with carrying bits ~XOR + 1 = bbbb1000
+then, XOR & (~XOR + 1) = 00001000
+so we can write as XOR & (-XOR) also.
+				*/
         for (i = 0; i < n; ++i)
         {
             if ((last & nums[i]) != 0)
