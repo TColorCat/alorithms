@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int countNumbersWithUniqueDigits(int n) 
+    {
+        
+        int solve=9;
+        int ans=10;
+       if((n>1)&&(n<=11))
+       {
+           for(int i=2;i<=n;i++)
+           {
+               solve=solve*(11-i);
+               ans+=solve;
+           }
+            return ans;
+       }
+       
+       else if(n>11)
+       {
+           return 0;
+       }
+       else
+       {
+           if(n==0)
+          return 1;
+          if(n==1)
+          return 10;
+       }
+       
+      return 0;
+    }
+};
