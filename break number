@@ -1,0 +1,56 @@
+class Solution {
+public:
+    int integerBreak(int n) {
+        int less=n%3;
+        int nn=n/3;
+        int result=1;
+        switch(n)
+        {
+            case(2):
+                 return 1;
+                break;
+            case(3):
+                return 2;
+                break;
+            case(4):
+                return 4;
+                break;
+    
+        default:
+        {
+        if(less==1)
+        {
+            for(int i=0;i<nn-1;i++)
+            {
+                result*=3;
+            }
+            return result*4;
+        }
+        else if(less==2)
+        {
+            for(int i=0;i<nn;i++)
+            {
+                result*=3;
+            }
+            return result*less;
+        }
+        else
+        {
+            for(int i=0;i<nn;i++)
+            {
+                result*=3;
+            }
+            return result;
+        }
+        break;
+        }
+        }
+    }
+};
+
+/*
+   At first, each n has its maximum product.
+   Some number's maximum product is equal to itself or less such as 4,3,2, thus n should be divided into parts of 4,3 or 2.Among them,4 can be 2+2, at last, it can be providede that for a number that can be completely divided by 2 or 3, latter is always bigger.
+
+   
+*/
