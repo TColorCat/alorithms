@@ -9,7 +9,7 @@ public:
             {
                 if(j%i==0)
                 {
-                    bulbs[j-1]=~bulbs[j-1];
+                    bulbs[j-1]=!bulbs[j-1];
                 }
             }
         }
