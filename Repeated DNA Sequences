@@ -2,34 +2,29 @@ class Solution {
 public:
     
     vector<string> findRepeatedDnaSequences(string s) {
-        
+        unordered_map<string,int> map;
         vector<string>temp;
-        vector<string>subsequence;
+        
         int length=s.size();
-        bool flag=false;
+     
         //cut down 10letter
         for(int i=0;i<length-9;i++)
         {
-            subsequence.push_back(s.substr(i,10));
+            
+            string temp=s.substr(i,10);
+            if(map.find(temp)==map.end())
+            {
+                map[temp]=1;
+            }
+            else
+            {
+                map[temp]++;
+            }
             
         }
         //compute the number of same strings
-        for(int i=0;i<length-9;i++)
-        {
-            
-           flag = false;
-	    	for (int j = i + 1; j<length - 9; j++)
-	    	{
-			
-			if (subsequence[j] == subsequence[i] && subsequence[j] != "")
-			{
-				flag = true;
-				subsequence[j] = "";//Avoiding the repeation of the result if a subsequence has 3or more copies
-			}
-			
-	    	}
-	    	if (flag == true)
-			   temp.push_back(subsequence[i]);
+        for(auto a:map){
+            if(a.second>1) temp.push_back(a.first);
         }
         return temp;
     }
