@@ -1,29 +1,10 @@
-class Solution {
-public:
-    int longestPalindrome(string s) {
-        int handenumber=0;
-        
-        int sum=0;
-        int mask[58] = {0};
-	
-	for (char a : s)
-	{
-		mask[int(a - 'A')]++;
-	}
-
-	for (int f : mask)
-	{
-		if (f % 2 == 0)
-		{
-			sum = sum + f;
-		}
-		else
-		{
-			
-			sum = sum + f - 1;
-			 handenumber=1;
-		}
-	}
-	return sum +  handenumber;
+public int longestPalindrome(String s) {
+        boolean[] map = new boolean[128];
+        int len = 0;
+        for (char c : s.toCharArray()) {
+            map[c] = !map[c];         // flip on each occurrence, false when seen n*2 times
+            if (!map[c]) len+=2;
+        }
+        if (len < s.length()) len++; // if more than len, atleast one single is present
+        return len;
     }
-};
