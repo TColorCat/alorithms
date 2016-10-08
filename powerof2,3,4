@@ -1,0 +1,13 @@
+//powerof 2
+
+if(n&(n-1)==0)
+     return true;
+     
+//powerof 3
+
+if(3^MAX % n==0)
+    return true;
+
+//powerof 4
+return ((num&(num-1))==0) && num%3==1;
+//         决定2              提出奇数指数2 根据n=1，n=n-1, n=n 推演证明
