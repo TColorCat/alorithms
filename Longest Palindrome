@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        int handenumber=0;
+        
+        int sum=0;
+        int mask[58] = {0};
+	
+	for (char a : s)
+	{
+		mask[int(a - 'A')]++;
+	}
+
+	for (int f : mask)
+	{
+		if (f % 2 == 0)
+		{
+			sum = sum + f;
+		}
+		else
+		{
+			
+			sum = sum + f - 1;
+			 handenumber=1;
+		}
+	}
+	return sum +  handenumber;
+    }
+};
