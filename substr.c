@@ -42,3 +42,45 @@ private:
         return right;
     }
 };
+//BK算法 using hash
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        
+        int h_size=haystack.size();
+        int n_size=needle.size();
+        
+        if(h_size==0&&n_size==0)return 0;//特殊情况
+        
+        
+        size_t hash_needle=hash<string>{}(needle);
+       
+        
+        
+        
+        
+       bool flag=true;
+        for(int i=0;i<=h_size-n_size;i++)
+        {
+           size_t hash_haysub=hash<string>{}(haystack.substr(i,n_size));
+           if(hash_needle==hash_haysub)
+           {
+               flag=true;
+               for(int j=0;j<n_size;j++)
+               {
+                   if(needle[j]!=haystack[i+j])
+                   {
+                       flag=false;
+                       break;
+                   }
+               }
+               if(flag)
+                return i;
+                
+           }
+           
+        }
+        return -1;//没有匹配
+    }
+
+};
