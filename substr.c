@@ -3,6 +3,7 @@ Implement strStr().
 
 Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.*/
 //BM算法
+//仅仅使用坏字符原则
 class Solution {
 public:
     int strStr(string haystack, string needle) {
@@ -31,6 +32,9 @@ public:
         return -1;
     }
 private:
+    /*根据模式字符串构造了一张每个字符在模式串中出现的最右位置的表格
+      匹配失败后，将会把主串中的相应的字符和其在模式串中出现的最右位置对其
+      坏字符原则*/
     vector<int> right_sol(const string&needle)
     {
         vector<int>right(256,-1);
